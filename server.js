@@ -3,10 +3,13 @@ const app = express()
 const port = process.env.PORT || 3000 
 
 app.get('/',(req,res)=>{ console.log("Remote Address: "+req.socket.remoteAddress+"\nLogged in\n Listening at port "+port);
-res.send("Remote Address: "+req.socket.remoteAddress+"\nLogged in\n Listening at port "+port);
+res.send({
+    "Remote-Address":req.socket.remoteAddress,
+    "Port":port 
+});
 })
 
 app.listen(port, ()=> { 
-  console.log("Example app listening at port:"+port);
+  console.log("Example app listening at localhost:"+port);
 })
 
